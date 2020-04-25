@@ -1,0 +1,2 @@
+# Ishbot
+Discord bot
