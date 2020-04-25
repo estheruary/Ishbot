@@ -15,14 +15,14 @@ bot = commands.Bot(command_prefix='/i ')
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
-'''
+
 @bot.event 
 async def on_member_join(member):
     await member.create_dm()
     await member.dm_channel.send(
-        f'Hi {member.name}, welcome to the Ishcord! My name is Ishbot, your humble servant.'
+        f'Hi {member.name}, welcome to the {member.guild} server! My name is Ishbot, your humble servant.'
     )
-'''
+
 
 @bot.command(name = 'roll_dice', help='Simulates rolling dice.')
 async def roll(ctx, number_of_dice: int, number_of_sides: int):
@@ -33,3 +33,4 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     await ctx.send(', '.join(dice))
 
 bot.run(TOKEN)
+
