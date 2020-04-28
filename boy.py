@@ -24,13 +24,27 @@ async def on_member_join(member):
     )
 
 
-@bot.command(name = 'roll_dice', help='Simulates rolling dice.')
-async def roll(ctx, number_of_dice: int, number_of_sides: int):
-    dice = [
-        str(random.choice(range(1, number_of_sides +1)))
-        for _ in range(number_of_dice)
-    ]
-    await ctx.send(', '.join(dice))
+@bot.command(name = 'roll', help='Simulates rolling dice.')
+async def roll(ctx, number_of_dice, number_of_sides):
+    try:
+        number_of_dice = int(float(number_of_dice))
+        number_of_sides = int(float(number_of_sides))
+        dice = [
+            str(random.choice(range(1, number_of_sides +1)))
+            for _ in range(number_of_dice)
+            ]
+        await ctx.send(', '.join(dice))
+    except:
+        await ctx.send("I don't understand what you want me to do.")
+
+@bot.command(name = 'blackjack', help='Play a game of Blackjack with Ishbot!')
+async def deal(ctx):
+    await ctx.send("I don't know how to play that yet, but I will soon!")
+
+@bot.command(name = 'hookers', help="Wouldn't you like to know?")
+async def hooker(ctx):
+    await ctx.send("We don't have hookers just yet, sorry")
+
 
 bot.run(TOKEN)
 
