@@ -46,5 +46,9 @@ async def hooker(ctx):
     await ctx.send("We don't have hookers just yet, sorry")
 
 
-bot.run(TOKEN)
 
+@bot.command(name = 'who_is_a_good_boy', help='Returns who is a good boy.')
+async def who_is_a_good_boi(ctx):
+    await ctx.send('*barks happily*')
+
+bot.run(TOKEN)
