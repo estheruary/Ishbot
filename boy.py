@@ -65,7 +65,7 @@ async def echo(ctx, message:str):
 
 
 
-@bot.event
+@client.event
 async def on_message(message):
     profamity_list = ['heck', 'darn', 'poop', 'frick', 'stupidhead']
     there_are_bad_words = False
