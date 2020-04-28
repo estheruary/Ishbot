@@ -1,4 +1,5 @@
 import os
+import asyncio
 
 import discord
 import random 
@@ -9,7 +10,8 @@ from discord.ext import commands
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-bot = commands.Bot(command_prefix='/i ')
+bot = commands.Bot(command_prefix='<:IshBot:704803379452313710> ')
+
 
 @bot.event
 async def on_ready():
@@ -49,6 +51,15 @@ async def hooker(ctx):
 
 @bot.command(name = 'who_is_a_good_boy', help='Returns who is a good boy.')
 async def who_is_a_good_boi(ctx):
-    await ctx.send('*barks happily*')
+    if ctx.author.nick != None:
+        await ctx.send(f'*barks happily at {ctx.author.nick}*')
+    else:
+        await ctx.send(f'*barks happily at {ctx.author.name}*')
+
+
+@bot.command(name = 'echo')
+async def echo(ctx, message:str):
+    print(message)
+
 
 bot.run(TOKEN)
