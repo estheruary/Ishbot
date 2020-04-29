@@ -4,6 +4,8 @@ import asyncio
 import discord
 import random 
 from dotenv import load_dotenv
+import xdice
+import traceback
 
 from discord.ext import commands
 
@@ -30,17 +32,13 @@ async def on_member_join(member):
 
 
 @bot.command(name='roll', help='Simulates rolling dice.')
-async def roll(ctx, number_of_dice, number_of_sides):
+async def roll(ctx, *args):
     try:
-        number_of_dice = int(float(number_of_dice))
-        number_of_sides = int(float(number_of_sides))
-        dice = [
-            str(random.choice(range(1, number_of_sides + 1)))
-            for _ in range(number_of_dice)
-            ]
-        await ctx.send(', '.join(dice))
+        result = xdice.roll("".join(args).replace(' ', ''))
+        await ctx.send("%s: %s" % (result, result.format()))
     except:
         await ctx.send("I don't understand what you want me to do.")
+        traceback.print_exc()
 
 
 @bot.command(name='blackjack', help='Play a game of Blackjack with Ishbot!')
@@ -67,7 +65,7 @@ async def echo(ctx, message:str):
 
 
 
-@bot.event
+@client.event
 async def on_message(message):
     profamity_list = ['heck', 'darn', 'poop', 'frick', 'stupidhead']
     there_are_bad_words = False
