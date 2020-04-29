@@ -12,8 +12,6 @@ from discord.ext import commands
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-
-client = discord.Client()
 bot = commands.Bot(command_prefix='<:IshBot:704803379452313710> ')
 
 
@@ -65,7 +63,7 @@ async def echo(ctx, message:str):
 
 
 
-@client.event
+@bot.event
 async def on_message(message):
     profamity_list = ['heck', 'darn', 'poop', 'frick', 'stupidhead']
     there_are_bad_words = False
